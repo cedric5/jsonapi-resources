@@ -340,7 +340,7 @@ module JSONAPI
     def _replace_polymorphic_to_one_link(relationship_type, key_value, key_type, _options)
       relationship = self.class._relationships[relationship_type.to_sym]
 
-      send("#{relationship.foreign_key}=", {type: key_type, id: key_value})
+      send("#{relationship.foreign_key}=", {type: key_type.to_s.capitalize, id: key_value})
       @save_needed = true
 
       :completed
